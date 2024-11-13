@@ -7,24 +7,24 @@ import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 
 export default function App() {
-  const user = useQuery(api.users.viewer);
-  return (
-    <Layout
-      menu={
-        <Authenticated>
-          <UserMenu>{user?.name ?? user?.email}</UserMenu>
-        </Authenticated>
-      }
-    >
-      <>
-        <Authenticated>
-          <ChatIntro />
-          <Chat viewer={(user ?? {})._id!} />
-        </Authenticated>
-        <Unauthenticated>
-          <SignInForm />
-        </Unauthenticated>
-      </>
-    </Layout>
-  );
+    const user = useQuery(api.users.viewer);
+    return (
+        <Layout
+            menu={
+                <Authenticated>
+                    <UserMenu>{user?.name ?? user?.email}</UserMenu>
+                </Authenticated>
+            }
+        >
+            <>
+                <Authenticated>
+                    <ChatIntro />
+                    <Chat viewer={(user ?? {})._id!} />
+                </Authenticated>
+                <Unauthenticated>
+                    <SignInForm />
+                </Unauthenticated>
+            </>
+        </Layout>
+    );
 }
